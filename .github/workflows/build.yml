@@ -6,22 +6,24 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up JDK 17
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
-      - name: Regenerate gradlew (fix Windows CRLF/damage)
-        run: |
-          gradle wrapper --gradle-version 8.4 || true
-          chmod +x ./gradlew
-          sed -i 's/\r$//' ./gradlew
-          ls -la
-      - name: Build with Gradle
-        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+          
+      - name: Set up Gradle (System)
+        uses: actions/setup-gradle@v4
         with:
-          name: FineVolume-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          gradle-version: '8.4'
+          
+      - name: Verify & Fix Permissions
+        run: |
+          chmod +x ./gradlew || true
+          sed -i 's/\r$//' ./gradlew || true
+          ls -la
+          
+      - name: Build with System Gradle
+        # 优先用系统 gradle 命令，绕过损坏的 ./gradlew
+        run: gradle :app:assembleDebug --no-daemon --stacktrace
