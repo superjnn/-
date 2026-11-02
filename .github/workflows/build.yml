@@ -16,19 +16,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set up Android SDK
-        uses: actions/setup-android@v3
-        with:
-          api-level: 33      # 需与 app/build.gradle 的 compileSdk 一致
-          build-tools: 33.0.2
+      # 环境已预装 Android SDK，只需用 sdkmanager 确保有对应版本
+      - name: Set up Android SDK components
+        run: |
+          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "/usr/local/lib/android/sdk/platform-tools" >> $PATH
+          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-33" "build-tools;33.0.2" || true
 
-      - name: Set up Gradle (System)
-        uses: actions/setup-gradle@v2
-        with:
-          gradle-version: '8.4'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-      - name: Build with System Gradle
-        run: gradle :app:assembleDebug --no-daemon --stacktrace
+      - name: Build Debug APK (using Gradle Wrapper)
+        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
