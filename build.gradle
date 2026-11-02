@@ -1,7 +1,6 @@
 // Top-level build file
 buildscript {
     repositories {
-        google()
         mavenCentral()
     }
     dependencies {
