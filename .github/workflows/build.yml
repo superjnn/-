@@ -14,16 +14,21 @@ jobs:
           java-version: '17'
           
       - name: Set up Gradle (System)
-        uses: actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.4'
           
-      - name: Verify & Fix Permissions
+      - name: Verify Permissions (Optional)
         run: |
-          chmod +x ./gradlew || true
           sed -i 's/\r$//' ./gradlew || true
-          ls -la
+          chmod +x ./gradlew || true
           
       - name: Build with System Gradle
-        # 优先用系统 gradle 命令，绕过损坏的 ./gradlew
+        # 使用系统 gradle 命令，彻底跳过本地损坏的 ./gradlew
         run: gradle :app:assembleDebug --no-daemon --stacktrace
+        
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: FineVolume-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
