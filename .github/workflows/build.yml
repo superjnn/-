@@ -16,7 +16,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # 环境已预装 Android SDK，只需用 sdkmanager 确保有对应版本
+      # 利用环境预装 SDK，下载对应版本（需与 app/build.gradle 的 compileSdk 一致）
       - name: Set up Android SDK components
         run: |
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
@@ -30,7 +30,7 @@ jobs:
         run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # 已升级至 v4，解决废弃拦截
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
