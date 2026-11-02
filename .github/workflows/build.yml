@@ -1,32 +1,25 @@
 name: Build Debug APK
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
-
-      - name: Verify files & Fix gradlew
+      - name: Regenerate gradlew (fix Windows CRLF/damage)
         run: |
-          pwd
-          ls -la
+          gradle wrapper --gradle-version 8.4 || true
           chmod +x ./gradlew
           sed -i 's/\r$//' ./gradlew
-
+          ls -la
       - name: Build with Gradle
-        run: ./gradlew :app:assembleDebug --no-daemon
-
+        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
