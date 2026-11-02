@@ -1,11 +1,4 @@
-// Top-level build file
 plugins {
     id 'com.android.application' version '8.2.2' apply false
 }
-
-// 彻底移除 allprojects { repositories { ... } } 块（解决 FAIL_ON_PROJECT_REPOS 冲突）
-// 所有仓库统一交由 settings.gradle 管理
-
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
-}
+tasks.register('clean', Delete) { delete rootProject.buildDir }
