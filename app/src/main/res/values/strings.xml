@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">精细音量</string>
+    <string name="title_config">分段映射配置</string>
+    <string name="hint_upper">上限 %1$d</string>
+    <string name="hint_multiplier">倍率</string>
+    <string name="label_stream">目标音量流</string>
+    <string name="label_step_mode">步进模式</string>
+    <string name="mode_linear">线性（均分 100 档）</string>
+    <string name="mode_mapped">分段映射（按倍率）</string>
+    <string name="label_show_ui">显示系统音量条</string>
+    <string name="label_stream_music">媒体</string>
+    <string name="label_stream_ring">铃声</string>
+    <string name="label_stream_alarm">闹钟</string>
+    <string name="label_stream_system">系统</string>
+    <string name="btn_test_up">测试 +1</string>
+    <string name="btn_test_down">测试 −1</string>
+    <string name="btn_save">保存并启用后台拦截</string>
+    <string name="status_off">后台拦截：未启用</string>
+    <string name="status_on">后台拦截：运行中</string>
+    <string name="toast_saved">已保存，下次按键生效</string>
+    <string name="toast_fixed_volume">当前设备为固定音量设备，无法改写系统音量</string>
+    <string name="toast_perm_required">需要无障碍服务权限才能全局拦截音量键</string>
+    <string name="section_advanced">高级</string>
+    <string name="label_virtual_step">虚拟总档位数（1–200）</string>
+</resources>

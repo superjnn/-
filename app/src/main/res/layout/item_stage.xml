@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@android:drawable/editbox_background">
+
+    <TextView
+        android:id="@+id/tvStageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第 1 段"
+        android:textStyle="bold"
+        android:minWidth="48dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上限"
+        android:layout_marginStart="8dp" />
+
+    <EditText
+        android:id="@+id/etUpper"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="倍率"
+        android:layout_marginStart="12dp" />
+
+    <EditText
+        android:id="@+id/etMultiplier"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:importantForAutofill="no" />
+</LinearLayout>

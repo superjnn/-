@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_config"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#222"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 预览曲线图 -->
+        <com.finevolume.app.MappingView
+            android:id="@+id/mappingView"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 三个分段配置卡片 -->
+        <LinearLayout
+            android:id="@+id/stageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <!-- 目标音量流 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_stream"
+            android:textStyle="bold"
+            android:textColor="#222" />
+
+        <RadioGroup
+            android:id="@+id/rgStream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <RadioButton android:id="@+id/rbMusic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_stream_music" android:checked="true" />
+            <RadioButton android:id="@+id/rbRing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_stream_ring" />
+            <RadioButton android:id="@+id/rbAlarm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_stream_alarm" />
+            <RadioButton android:id="@+id/rbSystem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_stream_system" />
+        </RadioGroup>
+
+        <Space android:layout_width="wrap_content" android:layout_height="16dp" />
+
+        <!-- 虚拟档位数 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_virtual_step"
+            android:textStyle="bold"
+            android:textColor="#222" />
+        <EditText
+            android:id="@+id/etVirtualSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="100"
+            android:importantForAutofill="no" />
+
+        <!-- 显示系统音量条 -->
+        <CheckBox
+            android:id="@+id/cbShowUi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_show_ui"
+            android:checked="true"
+            android:layout_marginTop="12dp" />
+
+        <Space android:layout_width="wrap_content" android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_off"
+            android:textColor="#666" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnTestUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_test_up"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnTestDown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_test_down"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
